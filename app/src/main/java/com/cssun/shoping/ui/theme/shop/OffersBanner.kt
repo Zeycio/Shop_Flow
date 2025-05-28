@@ -34,13 +34,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-data class Offer(
-    val title: String,
-    val subtitle: String,
-    val dateRange: String,
-    val imageIcon: @Composable () -> Unit
-)
-
 @Composable
 fun OfferCard(
     offer: Offer,
@@ -114,7 +107,11 @@ fun OfferCard(
                             shape = CircleShape
                         )
                         .then(
-                            if (index != currentPageIndex) Modifier.border(1.dp, inactiveDotColor, CircleShape)
+                            if (index != currentPageIndex) Modifier.border(
+                                1.dp,
+                                inactiveDotColor,
+                                CircleShape
+                            )
                             else Modifier
                         )
                 )

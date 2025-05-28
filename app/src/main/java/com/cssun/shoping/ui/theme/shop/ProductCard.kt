@@ -85,17 +85,18 @@ fun ProductCard(product: Product) {
                     contentPadding = PaddingValues(10.dp)
                 ) {
                     Icon(
-                        imageVector = if (favstate.value) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder ,
+                        imageVector = if (favstate.value) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                         contentDescription = "Add ${product.name} to cart",
-                        tint = if (favstate.value)  Color(0xFF7A64F5) else Color.Gray,
+                        tint = if (favstate.value) Color(0xFF7A64F5) else Color.Gray,
                         modifier = Modifier.size(24.dp)
                     )
                 }
                 if (product.bestSeller) {
                     OutlinedButton(
-                        modifier = Modifier.wrapContentSize().align(Alignment.TopEnd)
-                            .padding(top = 10.dp, end = 10.dp)
-                        ,
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .align(Alignment.TopEnd)
+                            .padding(top = 10.dp, end = 10.dp),
                         colors = ButtonDefaults.buttonColors(Color.Black),
                         onClick = {}) {
                         Text(
@@ -104,9 +105,6 @@ fun ProductCard(product: Product) {
                         )
                     }
                 }
-
-
-
                 Column(
                     modifier = Modifier
                         .align(alignment = Alignment.Center)
@@ -132,7 +130,9 @@ fun ProductCard(product: Product) {
 
                         ) {
                         Column(
-                            Modifier.padding(10.dp).background(Color.Transparent)
+                            Modifier
+                                .padding(10.dp)
+                                .background(Color.Transparent)
                         ) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
@@ -168,7 +168,6 @@ fun ProductCard(product: Product) {
                                     )
                                 }
                             }
-
                             Text(
                                 text = product.description,
                                 fontSize = 14.sp,
@@ -231,16 +230,16 @@ fun ProductCard(product: Product) {
 
                             }
                         }
-
                     }
                 }
-
                 OutlinedButton(
                     onClick = { /* TODO: Handle add to cart for product.name */ },
                     shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent ),
-                    border = _root_ide_package_.androidx.compose.foundation.BorderStroke(2.dp,
-                        Color(0xFF8BC34A)),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    border = _root_ide_package_.androidx.compose.foundation.BorderStroke(
+                        2.dp,
+                        Color(0xFF8BC34A)
+                    ),
                     modifier = Modifier
                         .padding(bottom = 15.dp, end = 15.dp)
                         .size(50.dp)
@@ -250,14 +249,11 @@ fun ProductCard(product: Product) {
                     Icon(
                         imageVector = Icons.Filled.ShoppingCart,
                         contentDescription = "Add ${product.name} to cart",
-                        tint =  Color(0xFF8BC34A),
+                        tint = Color(0xFF8BC34A),
                         modifier = Modifier.size(24.dp)
                     )
                 }
-
             }
-
-
         }
     }
 }
@@ -364,7 +360,10 @@ fun Modifier.paperBackgroundBottomRightTear(
         moveTo(pxCornerRadius, 0f)
         lineTo(size.width - pxCornerRadius, 0f)
         arcTo(
-            rect = Rect(Offset(size.width - 2 * pxCornerRadius, 0f), Size(2 * pxCornerRadius, 2 * pxCornerRadius)),
+            rect = Rect(
+                Offset(size.width - 2 * pxCornerRadius, 0f),
+                Size(2 * pxCornerRadius, 2 * pxCornerRadius)
+            ),
             startAngleDegrees = 270f,
             sweepAngleDegrees = 90f,
             forceMoveTo = false
@@ -387,7 +386,10 @@ fun Modifier.paperBackgroundBottomRightTear(
         lineTo(pxCornerRadius, size.height)
 
         arcTo(
-            rect = Rect(Offset(0f, size.height - 2 * pxCornerRadius), Size(2 * pxCornerRadius, 2 * pxCornerRadius)),
+            rect = Rect(
+                Offset(0f, size.height - 2 * pxCornerRadius),
+                Size(2 * pxCornerRadius, 2 * pxCornerRadius)
+            ),
             startAngleDegrees = 90f,
             sweepAngleDegrees = 90f,
             forceMoveTo = false

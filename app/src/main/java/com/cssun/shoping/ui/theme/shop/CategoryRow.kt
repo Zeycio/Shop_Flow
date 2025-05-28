@@ -1,11 +1,8 @@
 package com.cssun.shoping.ui.theme.shop
 
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,17 +17,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -43,23 +34,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cssun.shoping.R
 
 
-data class Category(
-    val name: String,
-    val imageResId: Int? = null,
-    val imageVector: androidx.compose.ui.graphics.vector.ImageVector? = null
-)
-
 @Composable
 fun CategoryItem(category: Category) {
     val darkCircleBackground = Color(0xFF1B1B1B)
-
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             modifier = Modifier
@@ -107,23 +90,22 @@ fun CategoriesSection() {
         Category("Cleaners", imageResId = R.drawable.face),
         Category("Toner", imageResId = R.drawable.toner),
         Category("Makeup", imageResId = R.drawable.makeup),
-        Category("Moisturisers", imageResId = R.drawable.moi,),
+        Category("Moisturisers", imageResId = R.drawable.moi),
         Category("Sunscreens", imageResId = R.drawable.sun),
         Category("Masks", imageResId = R.drawable.categorysample),
     )
 
-     val  seeAll =  remember { mutableStateOf(false) }
+    val seeAll = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color(0xFF2C2C2C))
-            .padding( horizontal = 10.dp)
+            .padding(horizontal = 10.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 10.dp,top =5.dp)
-            ,
+                .padding(bottom = 10.dp, top = 5.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -134,7 +116,7 @@ fun CategoriesSection() {
                 fontFamily = FontFamily(Font(R.font.century))
             )
             Text(
-                text = if (!seeAll.value)"See all" else "Compact View",
+                text = if (!seeAll.value) "See all" else "Compact View",
                 color = Color.White.copy(alpha = 0.7f),
                 fontSize = 16.sp,
                 textDecoration = TextDecoration.Underline,
@@ -143,7 +125,7 @@ fun CategoriesSection() {
                 }
             )
         }
-        if(!seeAll.value) {
+        if (!seeAll.value) {
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -153,9 +135,11 @@ fun CategoriesSection() {
                     CategoryItem(category = category)
                 }
             }
-        }else{
+        } else {
             LazyColumn(
-                modifier = Modifier.fillMaxWidth().height(500.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(500.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
